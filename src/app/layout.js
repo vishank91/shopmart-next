@@ -1,15 +1,7 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Script from "next/script";
+import MasterLayout from "./MasterLayout";
+import WowInit from "@/Components/WOW";
+import "animate.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,8 +10,46 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+          rel="stylesheet" />
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+        <link href="/lib/animate/animate.min.css" rel="stylesheet" />
+        {/* <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" /> */}
+
+
+        <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+        <link href="/css/style.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="/richtexteditor/rte_theme_default.css" />
+        <Script defer type="text/javascript" src="/richtexteditor/rte.js" />
+        <Script defer type="text/javascript" src='/richtexteditor/plugins/all_plugins.js' />
+      </head>
+      <body>
+        <MasterLayout>
+          <WowInit />
+          {children}
+        </MasterLayout>
+
+        <div id="root"></div>
+        <a href="#" className="btn btn-primary btn-lg-square back-to-top"><i className="fa fa-arrow-up"></i></a>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        {/* <script src="/lib/wow/wow.min.js"></script> */}
+        {/* <script src="/lib/owlcarousel/owl.carousel.min.js"></script> */}
+
+        <script src="/js/main.js"></script>
+      </body>
     </html>
   );
 }
