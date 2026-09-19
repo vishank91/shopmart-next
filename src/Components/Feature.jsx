@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -31,7 +32,7 @@ export default function Feature() {
         <p className='text-center'>Discover a smarter way to shop with features designed to make every purchase simple, secure, and enjoyable. From premium product quality and fast delivery to secure payments and dedicated customer support, {settingData.siteName} is committed to providing a seamless online shopping experience that exceeds your expectations every time.</p>
         <div className='row my-5'>
           {FeatureStateData.filter(x => x.status).map(item => {
-            return <div className='col-lg-4 col-md-6'>
+            return <div className='col-lg-4 col-md-6' key={item.id}>
               <div className="my-card p-5">
                 <div className='text-center'>
                   <span dangerouslySetInnerHTML={{ __html: item.icon }} className='fs-1'></span>

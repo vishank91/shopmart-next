@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import { useRouter } from 'next/navigation'
 export default function Profile() {
     let [data, setData] = useState({})
-    let navigate = usenavigate.push()
+    let navigate = useRouter()
 
     useEffect(() => {
         (async () => {

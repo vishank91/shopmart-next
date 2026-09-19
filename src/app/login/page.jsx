@@ -1,8 +1,8 @@
-import AboutPage from '@/PageComponents/AboutPage'
+import LoginPage from '@/PageComponents/User/LoginPage'
 import React from 'react'
 
 export default function page() {
   return (
-    <AboutPage/>
+    <LoginPage/>
   )
 }

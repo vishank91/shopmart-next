@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import { useRouter } from 'next/navigation'
 
 const inputOptions = {
   name: "",
@@ -19,7 +18,7 @@ export default function Address() {
   let [inputData, setInputData] = useState({ ...inputOptions })
 
   let [data, setData] = useState({ address: [] })
-  let navigate = usenavigate.push()
+  let navigate = useRouter()
 
   function create() {
     setShowModal(true)

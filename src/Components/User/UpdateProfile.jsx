@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import { useRouter } from 'next/navigation'
 export default function UpdateProfile({ changeSearchParams }) {
-  let [data, setData] = useState({})
+  let [data, setData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    phone: ""
+  })
   let [errorMessage, setErrorMessage] = useState({
     name: "",
     username: "",
@@ -11,7 +15,7 @@ export default function UpdateProfile({ changeSearchParams }) {
   })
   let [show, setShow] = useState(false)
 
-  let navigate = usenavigate.push()
+  let navigate = useRouter()
 
   function getInputData(e) {
     let { name, value } = e.target

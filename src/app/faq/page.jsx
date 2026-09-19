@@ -1,8 +1,8 @@
-import AboutPage from '@/PageComponents/AboutPage'
+import FaqPage from '@/PageComponents/FaqPage'
 import React from 'react'
 
 export default function page() {
   return (
-    <AboutPage/>
+    <FaqPage/>
   )
 }
