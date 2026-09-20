@@ -19,7 +19,7 @@ export default function AdminCheckoutPage() {
 
     function updateRecord(id) {
         if (window.confirm("Are You Sure to Status Of That Record")) {
-            let index = data.findIndex(x => x.id === id)
+            let index = data.findIndex(x => x.id === slug)
             data[index].status = !data[index].status
             dispatch(updateCheckout({ ...data[index] }))
             setData(data)

@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Breadcrum from '../../../Components/Breadcrum'
@@ -8,7 +9,7 @@ import AdminSidebar from '../../../Components/Admin/AdminSidebar'
 
 import { getCheckout, deleteCheckout, updateCheckout } from "../../../Redux/ActionCreators/CheckoutActionCreators"
 export default function AdminCheckoutShowPage() {
-    let { id } = useParams()
+    let { slug } = useParams()
     let [data, setData] = useState({})
     let [orderStatus, setOrderStatus] = useState("")
     let [paymentStatus, setPaymentStatus] = useState("")
@@ -32,7 +33,7 @@ export default function AdminCheckoutShowPage() {
         (() => {
             dispatch(getCheckout())
             if (CheckoutStateData.length) {
-                let item = CheckoutStateData.find(x => x.id === id)
+                let item = CheckoutStateData.find(x => x.id === slug)
                 if (item) {
                     setData(item)
                     setOrderStatus(item.orderStatus)

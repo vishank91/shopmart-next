@@ -19,7 +19,7 @@ export default function AdminFaqPage() {
     function deleteRecord(id) {
         if (window.confirm("Are You Sure to Delete That Record")) {
             dispatch(deleteFaq({ id: id }))
-            setData(data.filter(x => x.id !== id))
+            setData(data.filter(x => x.id !== slug))
         }
     }
 

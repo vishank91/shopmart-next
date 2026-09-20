@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Breadcrum from '../../../Components/Breadcrum'
@@ -10,7 +11,7 @@ import ImageValidators from '../../../FormValidators/ImageValidators'
 
 import { updateBrand, getBrand } from '../../../Redux/ActionCreators/BrandActionCreators'
 export default function AdminBrandUpdatePage() {
-    let { id } = useParams()
+    let { slug } = useParams()
 
     let [data, setData] = useState({
         name: "",
@@ -41,7 +42,7 @@ export default function AdminBrandUpdatePage() {
         if (error)
             setShow(true)
         else {
-            let item = BrandStateData.find(x => x.id !== id && x.name?.toLocaleLowerCase() === data.name?.toLocaleLowerCase())
+            let item = BrandStateData.find(x => x.id !== slug && x.name?.toLocaleLowerCase() === data.name?.toLocaleLowerCase())
             if (item) {
                 setErrorMessage({ ...errorMessage, name: 'Brand With This Name Already Exist' })
                 setShow(true)
@@ -64,7 +65,7 @@ export default function AdminBrandUpdatePage() {
         (() => {
             dispatch(getBrand())
             if (BrandStateData.length) {
-                let item = BrandStateData.find(x => x.id === id)
+                let item = BrandStateData.find(x => x.id === slug)
                 if (item)
                     setData({ ...data, ...item })
                 else

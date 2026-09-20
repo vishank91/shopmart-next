@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Breadcrum from '../../../Components/Breadcrum'
@@ -9,7 +10,7 @@ import TextValidators from '../../../FormValidators/TextValidators'
 
 import { updateUser, getUser } from '../../../Redux/ActionCreators/UserActionCreators'
 export default function AdminUserUpdatePage() {
-    let { id } = useParams()
+    let { slug } = useParams()
 
     let [data, setData] = useState({
         name: '',
@@ -43,7 +44,7 @@ export default function AdminUserUpdatePage() {
             setShow(true)
             return
         }
-        item = UserStateData.find(x => x.id !== id && (x.username.toLocaleLowerCase() === data.username.toLocaleLowerCase() || x.email.toLocaleLowerCase() === data.email.toLocaleLowerCase()))
+        item = UserStateData.find(x => x.id !== slug && (x.username.toLocaleLowerCase() === data.username.toLocaleLowerCase() || x.email.toLocaleLowerCase() === data.email.toLocaleLowerCase()))
         if (item) {
             setErrorMessage({
                 ...errorMessage,
@@ -61,7 +62,7 @@ export default function AdminUserUpdatePage() {
         (() => {
             dispatch(getUser())
             if (UserStateData.length) {
-                let item = UserStateData.find(x => x.id === id)
+                let item = UserStateData.find(x => x.id === slug)
                 if (item)
                     setData({ ...data, ...item })
                 else

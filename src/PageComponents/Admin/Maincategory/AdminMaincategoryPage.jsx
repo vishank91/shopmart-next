@@ -19,7 +19,7 @@ export default function AdminMaincategoryPage() {
     function deleteRecord(id) {
         if (window.confirm("Are You Sure to Delete That Record")) {
             dispatch(deleteMaincategory({ id: id }))
-            setData(data.filter(x => x.id !== id))
+            setData(data.filter(x => x.id !== slug))
         }
     }
 

@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Breadcrum from '../../../Components/Breadcrum'
@@ -9,7 +10,7 @@ import TextValidators from '../../../FormValidators/TextValidators'
 
 import { updateFeature, getFeature } from '../../../Redux/ActionCreators/FeatureActionCreators'
 export default function AdminFeatureUpdatePage() {
-    let { id } = useParams()
+    let { slug } = useParams()
 
     let [data, setData] = useState({
             name: "",
@@ -40,7 +41,7 @@ export default function AdminFeatureUpdatePage() {
         if (error)
             setShow(true)
         else {
-            let item = FeatureStateData.find(x => x.id !== id && x.name?.toLocaleLowerCase() === data.name?.toLocaleLowerCase())
+            let item = FeatureStateData.find(x => x.id !== slug && x.name?.toLocaleLowerCase() === data.name?.toLocaleLowerCase())
             if (item) {
                 setErrorMessage({ ...errorMessage, name: 'Feature With This Name Already Exist' })
                 setShow(true)
@@ -55,7 +56,7 @@ export default function AdminFeatureUpdatePage() {
         (() => {
             dispatch(getFeature())
             if (FeatureStateData.length) {
-                let item = FeatureStateData.find(x => x.id === id)
+                let item = FeatureStateData.find(x => x.id === slug)
                 if (item)
                     setData({ ...data, ...item })
                 else

@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Breadcrum from '../../../Components/Breadcrum'
@@ -10,7 +11,7 @@ import ImageValidators from '../../../FormValidators/ImageValidators'
 
 import { updateSubcategory, getSubcategory } from '../../../Redux/ActionCreators/SubcategoryActionCreators'
 export default function AdminSubcategoryUpdatePage() {
-    let { id } = useParams()
+    let { slug } = useParams()
 
     let [data, setData] = useState({
         name: "",
@@ -41,7 +42,7 @@ export default function AdminSubcategoryUpdatePage() {
         if (error)
             setShow(true)
         else {
-            let item = SubcategoryStateData.find(x => x.id !== id && x.name?.toLocaleLowerCase() === data.name?.toLocaleLowerCase())
+            let item = SubcategoryStateData.find(x => x.id !== slug && x.name?.toLocaleLowerCase() === data.name?.toLocaleLowerCase())
             if (item) {
                 setErrorMessage({ ...errorMessage, name: 'Subcategory With This Name Already Exist' })
                 setShow(true)
@@ -64,7 +65,7 @@ export default function AdminSubcategoryUpdatePage() {
         (() => {
             dispatch(getSubcategory())
             if (SubcategoryStateData.length) {
-                let item = SubcategoryStateData.find(x => x.id === id)
+                let item = SubcategoryStateData.find(x => x.id === slug)
                 if (item)
                     setData({ ...data, ...item })
                 else

@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Breadcrum from '../../../Components/Breadcrum'
@@ -9,7 +10,7 @@ import TextValidators from '../../../FormValidators/TextValidators'
 
 import { updateFaq, getFaq } from '../../../Redux/ActionCreators/FaqActionCreators'
 export default function AdminFaqUpdatePage() {
-    let { id } = useParams()
+    let { slug } = useParams()
 
     let [data, setData] = useState({
         question: "",
@@ -38,7 +39,7 @@ export default function AdminFaqUpdatePage() {
         if (error)
             setShow(true)
         else {
-            let item = FaqStateData.find(x => x.id !== id && x.question?.toLocaleLowerCase() === data.question?.toLocaleLowerCase())
+            let item = FaqStateData.find(x => x.id !== slug && x.question?.toLocaleLowerCase() === data.question?.toLocaleLowerCase())
             if (item) {
                 setErrorMessage({ ...errorMessage, name: 'Faq With This Question Already Exist' })
                 setShow(true)
@@ -53,7 +54,7 @@ export default function AdminFaqUpdatePage() {
         (() => {
             dispatch(getFaq())
             if (FaqStateData.length) {
-                let item = FaqStateData.find(x => x.id === id)
+                let item = FaqStateData.find(x => x.id === slug)
                 if (item)
                     setData({ ...data, ...item })
                 else

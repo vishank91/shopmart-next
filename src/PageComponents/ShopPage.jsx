@@ -137,9 +137,10 @@ export default function ShopPage() {
             applySearchFilter(searchParams.get("search"))
         else {
             let selectItems = {
-                maincategory: searchParams.get("mc") || "",
-                subcategory: searchParams.get("sc") || "",
-                brand: searchParams.get("br") || ""
+                ...selected,
+                maincategory: searchParams.get("mc") ? [searchParams.get("mc")] : [],
+                subcategory: searchParams.get("sc") ? [searchParams.get("sc")] : [],
+                brand: searchParams.get("br") ? [searchParams.get("br")] : [],
             }
             setSelected({ ...selected, ...selectItems })
             applySelectFilter({ ...selected, ...selectItems })

@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
 
@@ -16,7 +17,7 @@ export default function AdminSidebar() {
                 <Link href="/admin/newsletter" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-envelope fs-5'></i> <span className='float-end'>Newsletter</span></Link>
                 <Link href="/admin/contact" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-telephone fs-5'></i> <span className='float-end'>Contact Us</span></Link>
                 <Link href="/admin/checkout" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-bag-check fs-5'></i> <span className='float-end'>Checkout</span></Link>
-                {localStorage.getItem("role")==="Super Admin"?<Link href="/admin/user" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-people fs-5'></i> <span className='float-end'>User</span></Link>:null}
+                {typeof localStorage !== "undefined" && localStorage.getItem("role") === "Super Admin" ? <Link href="/admin/user" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-people fs-5'></i> <span className='float-end'>User</span></Link> : null}
             </div>
         </>
     )

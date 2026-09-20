@@ -1,5 +1,7 @@
+"use client"
 import React, { useEffect, useState, useRef } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Breadcrum from '../../../Components/Breadcrum'
@@ -16,7 +18,7 @@ import { getBrand } from '../../../Redux/ActionCreators/BrandActionCreators'
 const colors = ["Black", "White", "Blue", "Red", "Green", "Gray", "Pink", "Yellow", "Megenta", "Purple", "Orange", "N/A"]
 const sizes = ["XXL", "XL", "L", "MD", "SM", "XS", "NB", "22", "24", "26", "28", "30", "32", "34", "36", "38", "40", "N/A"]
 export default function AdminProductUpdatePage() {
-    let { id } = useParams()
+    let { slug } = useParams()
 
     let refdiv = useRef(null);
     let [data, setData] = useState({
@@ -126,7 +128,7 @@ export default function AdminProductUpdatePage() {
         (() => {
             dispatch(getProduct())
             if (ProductStateData.length) {
-                let item = ProductStateData.find(x => x.id === id)
+                let item = ProductStateData.find(x => x.id === slug)
                 if (item) {
                     setData({ ...data, ...item })
                     rte = new window.RichTextEditor(refdiv.current);

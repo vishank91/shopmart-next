@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Breadcrum from '../../../Components/Breadcrum'
@@ -8,7 +9,7 @@ import AdminSidebar from '../../../Components/Admin/AdminSidebar'
 
 import { getContactUs, deleteContactUs, updateContactUs } from "../../../Redux/ActionCreators/ContactUsActionCreators"
 export default function AdminContactUsShowPage() {
-    let { id } = useParams()
+    let { slug } = useParams()
     let [data, setData] = useState({})
     let [flag, setFlag] = useState(true)
 
@@ -36,7 +37,7 @@ export default function AdminContactUsShowPage() {
         (() => {
             dispatch(getContactUs())
             if (ContactUsStateData.length) {
-                let item = ContactUsStateData.find(x => x.id === id)
+                let item = ContactUsStateData.find(x => x.id === slug)
                 if (item)
                     setData(item)
                 else

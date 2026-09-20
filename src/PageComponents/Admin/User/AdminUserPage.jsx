@@ -19,7 +19,7 @@ export default function AdminUserPage() {
 
     function updateRecord(id) {
         if (window.confirm("Are You Sure to Status Of That Record")) {
-            let index = data.findIndex(x => x.id === id)
+            let index = data.findIndex(x => x.id === slug)
             data[index].status = !data[index].status
             dispatch(updateUser({ ...data[index] }))
             setData(data)
@@ -30,7 +30,7 @@ export default function AdminUserPage() {
     function deleteRecord(id) {
         if (window.confirm("Are You Sure to Delete That Record")) {
             dispatch(deleteUser({ id: id }))
-            setData(data.filter(x => x.id !== id))
+            setData(data.filter(x => x.id !== slug))
         }
     }
 

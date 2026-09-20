@@ -12,7 +12,7 @@ export default function Wishlist() {
   function deleteRecord(id) {
     if (window.confirm("Are You Sure to Delete That Record")) {
       dispatch(deleteWishlist({ id: id }))
-      setData(data.filter(x => x.id !== id))
+      setData(data.filter(x => x.id !== slug))
     }
   }
 

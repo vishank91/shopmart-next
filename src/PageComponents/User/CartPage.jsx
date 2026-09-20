@@ -19,16 +19,16 @@ export default function CartPage() {
     function deleteRecord(id) {
         if (window.confirm("Are You Sure to Delete That Record")) {
             dispatch(deleteCart({ id: id }))
-            setData(data.filter(x => x.id !== id))
+            setData(data.filter(x => x.id !== slug))
         }
     }
 
     function updateRecord(id, option) {
-        let item = data.find(x => x.id === id)
+        let item = data.find(x => x.id === slug)
         if ((item.quantity === 1 && option === "DEC") || (item.quantity === item.stockQuantity && option === "INC"))
             return
 
-        let index = data.findIndex(x => x.id === id)
+        let index = data.findIndex(x => x.id === slug)
         if (option === "DEC") {
             item.quantity = item.quantity - 1
             item.total = item.total - item.price
