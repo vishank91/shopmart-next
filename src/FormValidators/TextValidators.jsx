@@ -30,6 +30,14 @@ export default function TextValidators(e) {
             else
                 return ""
 
+        case "url":
+            if (!value || value.length === 0)
+                return name + " Field is Mendatory"
+            else if (value.length < 1 || value.length > 100)
+                return name + " Field Length Must Be 1-100"
+            else
+                return ""
+
         case "password":
             if (!value || value.length === 0)
                 return name + " Field is Mendatory"
@@ -76,6 +84,7 @@ export default function TextValidators(e) {
 
         case "shortDescription":
         case "answer":
+        case "title":
             if (!value || value.length === 0)
                 return name + " Field is Mendatory"
             else if (value.length < 20 || value.length > 1000)
@@ -84,6 +93,8 @@ export default function TextValidators(e) {
                 return ""
 
         case "message":
+        case "keywords":
+        case "description":
             if (!value || value.length === 0)
                 return name + " Field is Mendatory"
             else if (value.length < 20)

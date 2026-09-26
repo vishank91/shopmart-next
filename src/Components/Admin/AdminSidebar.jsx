@@ -18,6 +18,7 @@ export default function AdminSidebar() {
                 <Link href="/admin/contact" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-telephone fs-5'></i> <span className='float-end'>Contact Us</span></Link>
                 <Link href="/admin/checkout" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-bag-check fs-5'></i> <span className='float-end'>Checkout</span></Link>
                 {typeof localStorage !== "undefined" && localStorage.getItem("role") === "Super Admin" ? <Link href="/admin/user" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-people fs-5'></i> <span className='float-end'>User</span></Link> : null}
+                <Link href="/admin/seoData" className="list-group-item list-group-item-action active mb-1" aria-current="true"><i className='bi bi-graph-up-arrow fs-5'></i> <span className='float-end'>Seo Data</span></Link>
             </div>
         </>
     )

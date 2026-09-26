@@ -13,6 +13,7 @@ import TestimonialSaga from "./TestimonialSagas";
 import NewsletterSaga from "./NewsletterSagas";
 import ContactUsSaga from "./ContactUsSagas";
 import UserSaga from "./UserSagas";
+import SeoDataSaga from "./SeoDataSagas";
 
 export default function* RootSaga() {
     yield all([
@@ -30,5 +31,6 @@ export default function* RootSaga() {
         NewsletterSaga(),
         ContactUsSaga(),
         UserSaga(),
+        SeoDataSaga(),
     ])
 }

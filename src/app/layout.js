@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet" />
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet" />
 
         <link href="/lib/animate/animate.min.css" rel="stylesheet" />
         {/* <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" /> */}
