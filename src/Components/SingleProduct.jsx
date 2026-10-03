@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function SingleProduct({ item, title }) {
     return (
@@ -7,7 +8,7 @@ export default function SingleProduct({ item, title }) {
             <div className="product-item rounded wow fadeInUp" data-wow-delay="0.1s">
                 <div className="product-item-inner border rounded">
                     <div className="product-item-inner-item">
-                        <img src={`${process.env.NEXT_PUBLIC_IMAGE_SERVER}${item.pic[0]}`} style={{ height: 400 }} className="img-fluid w-100 rounded-top" alt="" />
+                        <Image src={`${process.env.NEXT_PUBLIC_IMAGE_SERVER}${item.pic[0]}`} width={200} height={400} style={{ height: 400 }} className="img-fluid w-100 rounded-top" alt="" />
                         <div className="product-new">{item.brand}</div>
                         <div className="product-details">
                             <Link href={`/product/${item.id}`}><i className="fa fa-eye fa-1x"></i></Link>

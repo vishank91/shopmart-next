@@ -17,6 +17,7 @@ import BestSellerProducts from '../Components/BestSellerProducts'
 
 import { getMaincategory } from "../Redux/ActionCreators/MaincategoryActionCreators"
 import { getProduct } from "../Redux/ActionCreators/ProductActionCreators"
+import Image from 'next/image';
 export default function HomePage() {
   let [maincategory, setMaincategory] = useState([])
 
@@ -61,7 +62,7 @@ export default function HomePage() {
                 <SwiperSlide>
                   <div className="row g-0 header-carousel-item align-items-center">
                     <div className="col-xl-6 carousel-img wow fadeInLeft" data-wow-delay="0.1s">
-                      <img src="img/carousel-1.png" className="img-fluid w-100" alt="Image" />
+                      <Image src="/img/carousel-1.png" height={300} width={300} className="img-fluid w-100" alt="Image" />
                     </div>
                     <div className="col-xl-6 carousel-content p-4">
                       <h4 className="text-uppercase fw-bold mb-4 wow fadeInRight" data-wow-delay="0.1s"
@@ -77,7 +78,7 @@ export default function HomePage() {
                 <SwiperSlide>
                   <div className="row g-0 header-carousel-item align-items-center">
                     <div className="col-xl-6 carousel-img wow fadeInLeft" data-wow-delay="0.1s">
-                      <img src="img/carousel-2.png" className="img-fluid w-100" alt="Image" />
+                      <Image src="/img/carousel-1.png" height={300} width={300} className="img-fluid w-100" alt="Image" />
                     </div>
                     <div className="col-xl-6 carousel-content p-4">
                       <h4 className="text-uppercase fw-bold mb-4 wow fadeInRight" data-wow-delay="0.1s"
